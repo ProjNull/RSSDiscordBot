@@ -1,0 +1,17 @@
+{
+  "name": "rss-bot",
+  "version": "1.0.0",
+  "description": "Discord bot that reads rss feeds",
+  "main": "dist/index.js",
+  "scripts": {
+    "start": "tsc && node ."
+  },
+  "author": "ProjNULL",
+  "license": "MIT",
+  "dependencies": {
+    "@discordjs/builders": "^1.6.3",
+    "@discordjs/core": "^0.6.0",
+    "rss-parser": "^3.13.0",
+    "typescript": "^5.0.4"
+  }
+}
