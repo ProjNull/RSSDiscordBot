@@ -3,7 +3,7 @@ export const app = {
     token: "TOKEN_HERE",
     avatarApiKey: "YOUR_AVATAR_API_KEY_HERE", // API: https://api.multiavatar.com/
     enableAutoUpdate: false, // Enable only when you set at least one channel
-    autoUpdateInterval: 1800000,
+    autoUpdateInterval: 1800000, // Update interval in miliseconds (30 minutes)
     initMessage: false, // Enable only when you set at least one channel
     helpCommands: false, 
 }
