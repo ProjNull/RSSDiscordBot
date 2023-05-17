@@ -151,6 +151,7 @@ client.once(GatewayDispatchEvents.Ready, ({api}) => {
     
     
     if (app.enableAutoUpdate) {
+        UpdateFeed(api)
         setInterval(async () => {
             UpdateFeed(api)
         }, app.autoUpdateInterval)
