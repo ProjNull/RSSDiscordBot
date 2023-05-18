@@ -1,13 +1,13 @@
-import { REST } from '@discordjs/rest';
-import { WebSocketManager } from '@discordjs/ws';
-import { GatewayDispatchEvents, GatewayIntentBits, InteractionType, MessageFlags, Client, ApplicationCommandsAPI, API, APIEmbed } from '@discordjs/core';
-import { EmbedBuilder } from '@discordjs/builders';
-import Parser from 'rss-parser';
-import { app, channels } from './config';
-import feed_compose from './feeds/feed_compose';
+import { REST } from '@discordjs/rest';
+import { WebSocketManager } from '@discordjs/ws';
+import { GatewayDispatchEvents, GatewayIntentBits, InteractionType, MessageFlags, Client, ApplicationCommandsAPI, API, APIEmbed } from '@discordjs/core';
+import { EmbedBuilder } from '@discordjs/builders';
+import Parser from 'rss-parser';
+import { app, channels } from './config';
+import feed_compose from './feeds/feed_compose';
 const token = app.token
 // Create REST and WebSocket managers directly
-const rest = new REST({ version: '10' }).setToken(token);
+const rest = new REST({ version: '10' }).setToken(token);
 
 
 
@@ -15,10 +15,10 @@ const gateway = new WebSocketManager({
 	token,
 	intents: GatewayIntentBits.GuildMessages | GatewayIntentBits.MessageContent,
 	rest,
-});
+});
 
 // Create a client to emit relevant events.
-const client = new Client({ rest, gateway });
+const client = new Client({ rest, gateway });
 
 
 client.api.applicationCommands.createGlobalCommand(app.id,{
@@ -39,7 +39,7 @@ client.api.applicationCommands.createGlobalCommand(app.id,{
 		
 // 	}
 //     console.log(data.content)
-// });
+// });
 
 
 client.on(GatewayDispatchEvents.InteractionCreate, async ({ data: interaction, api }) => {
@@ -65,7 +65,7 @@ client.on(GatewayDispatchEvents.InteractionCreate, async ({ data: interaction, a
         }
 
     }
-});
+});
 
 
 function shortstring(string: string) {
@@ -122,9 +122,9 @@ const UpdateFeed = async (api:API) => {
             })
             console.log(embeds[3])
             if (embeds.length > 0) {
-                const chunkSize = 10;
-                for (let i = 0; i < embeds.length; i += chunkSize) {
-                    const chunk = embeds.slice(i, i + chunkSize);
+                const chunkSize = 10;
+                for (let i = 0; i < embeds.length; i += chunkSize) {
+                    const chunk = embeds.slice(i, i + chunkSize);
                     api.channels.createMessage(channel, {embeds: chunk, content: ""})
                 }
                 
@@ -161,7 +161,7 @@ client.once(GatewayDispatchEvents.Ready, ({api}) => {
     
 
     console.log('Ready!')
-});
+});
 
 // Start the WebSocket connection.
-gateway.connect();
+gateway.connect();
